@@ -1,65 +1,109 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(SensorApp());
 }
 
-class MyApp extends StatelessWidget {
+class SensorApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _SensorAppState();
+}
+
+class _SensorAppState extends State<SensorApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.grey,
+        ),
+        home: Navigator(
+          pages: [
+            MaterialPage(
+              key: ValueKey('HomePage'),
+              child: HomePage(title: 'Sensors Example'),
+            ),
+          ],
+          onPopPage: (route, result) => route.didPop(result),
+        ));
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+class HomePage extends StatelessWidget {
+  HomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void _changePage(String pageName) {
+    print(pageName);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title!),
+        title: Text(title!),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SensorBox(
+                  title: 'Magnetometer',
+                  onPress: () => _changePage('Magnetometer'),
+                ),
+                SensorBox(
+                  title: 'Accelerometer',
+                  onPress: () => _changePage('Accelerometer'),
+                ),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SensorBox(
+                  title: 'Barometer',
+                  onPress: () => _changePage('Barometer'),
+                ),
+                SensorBox(
+                  title: 'Gyroscope',
+                  onPress: () => _changePage('Gyroscope'),
+                ),
+              ],
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class SensorBox extends StatelessWidget {
+  SensorBox({Key? key, required this.title, required this.onPress})
+      : super(key: key);
+
+  final String title;
+  final Function onPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: SizedBox(
+        height: 140,
+        width: 140,
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: TextButton(
+              child: Text(title),
+              onPressed: () => onPress(),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
