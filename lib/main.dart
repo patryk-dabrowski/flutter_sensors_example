@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,8 +35,35 @@ class HomePage extends StatelessWidget {
 
   final String? title;
 
-  void _changePage(String pageName) {
-    print(pageName);
+  void _changePage(BuildContext context, String pageName) {
+    switch (pageName) {
+      case 'Magnetometer':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MagnetometerPage()),
+        );
+        break;
+      case 'Accelerometer':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AccelerometerPage()),
+        );
+        break;
+      case 'Barometer':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => BarometerPage()),
+        );
+        break;
+      case 'Gyroscope':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GyroscopePage()),
+        );
+        break;
+      default:
+        print(pageName);
+    }
   }
 
   @override
@@ -53,11 +81,11 @@ class HomePage extends StatelessWidget {
               children: [
                 SensorBox(
                   title: 'Magnetometer',
-                  onPress: () => _changePage('Magnetometer'),
+                  onPress: () => _changePage(context, 'Magnetometer'),
                 ),
                 SensorBox(
                   title: 'Accelerometer',
-                  onPress: () => _changePage('Accelerometer'),
+                  onPress: () => _changePage(context, 'Accelerometer'),
                 ),
               ],
             ),
@@ -66,16 +94,72 @@ class HomePage extends StatelessWidget {
               children: [
                 SensorBox(
                   title: 'Barometer',
-                  onPress: () => _changePage('Barometer'),
+                  onPress: () => _changePage(context, 'Barometer'),
                 ),
                 SensorBox(
                   title: 'Gyroscope',
-                  onPress: () => _changePage('Gyroscope'),
+                  onPress: () => _changePage(context, 'Gyroscope'),
                 ),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MagnetometerPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Magnetometer'),
+      ),
+      body: Center(
+        child: Text('Magnetometer'),
+      ),
+    );
+  }
+}
+
+class AccelerometerPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Accelerometer'),
+      ),
+      body: Center(
+        child: Text('Accelerometer'),
+      ),
+    );
+  }
+}
+
+class BarometerPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Barometer'),
+      ),
+      body: Center(
+        child: Text('Barometer'),
+      ),
+    );
+  }
+}
+
+class GyroscopePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Gyroscope'),
+      ),
+      body: Center(
+        child: Text('Gyroscope'),
       ),
     );
   }
