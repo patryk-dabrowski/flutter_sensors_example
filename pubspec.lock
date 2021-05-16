@@ -65,9 +65,9 @@ packages:
   flutter_barometer:
     dependency: "direct main"
     description:
-      path: "../../Desktop/flutter_plugins/flutter_barometer"
-      relative: true
-    source: path
+      name: flutter_barometer
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.1.0"
   flutter_test:
     dependency: "direct dev"
