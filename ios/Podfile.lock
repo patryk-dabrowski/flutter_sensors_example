@@ -1,20 +1,26 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_barometer (0.0.1):
+    - Flutter
   - sensors (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - flutter_barometer (from `.symlinks/plugins/flutter_barometer/ios`)
   - sensors (from `.symlinks/plugins/sensors/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_barometer:
+    :path: ".symlinks/plugins/flutter_barometer/ios"
   sensors:
     :path: ".symlinks/plugins/sensors/ios"
 
 SPEC CHECKSUMS:
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_barometer: d00841d78c4c7c1bdbe3b130fb90daaa2acc7568
   sensors: 84eb7a30e47a649e4172b71d6e81be614c280336
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
