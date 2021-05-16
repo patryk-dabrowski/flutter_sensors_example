@@ -18,6 +18,7 @@ class _SensorAppState extends State<SensorApp> {
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.grey,
+          scaffoldBackgroundColor: Colors.grey
         ),
         home: Navigator(
           pages: [
